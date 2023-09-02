@@ -19,4 +19,12 @@ func main() {
 	}
 	fmt.Printf("ID Token: %v", c.IDToken)
 
+	basicInfo, err := c.GetBasicInfo()
+	if err != nil {
+		fmt.Printf("failed to get basic info: %v", err)
+		return
+	}
+
+	fmt.Printf("Basic Info: %v", basicInfo)
+
 }

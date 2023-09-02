@@ -83,7 +83,7 @@ func (c *Client) getRequestVerificationToken() error {
 		return fmt.Errorf("failed to read response body: %v", err)
 	}
 
-	fmt.Printf("resp.Body: %v\n", string(respByte))
+	// fmt.Printf("resp.Body: %v\n", string(respByte))
 
 	regex := regexp.MustCompile(`<input name="__RequestVerificationToken" type="hidden" value="(.*)" />`)
 	matches := regex.FindStringSubmatch(string(respByte))
@@ -138,7 +138,7 @@ func (c *Client) getAccessTokenAndRefreshToken() error {
 		return fmt.Errorf("failed to read response body: %v", err)
 	}
 
-	fmt.Printf("resp.Body: %v\n", string(respByte))
+	// fmt.Printf("resp.Body: %v\n", string(respByte))
 
 	err = json.Unmarshal(respByte, &respPayload)
 	if err != nil {
@@ -151,7 +151,7 @@ func (c *Client) getAccessTokenAndRefreshToken() error {
 	c.Code, _ = respPayload["code"].(string)
 
 	// debug
-	fmt.Printf("respPayload: %v\n", respPayload)
+	// fmt.Printf("respPayload: %v\n", respPayload)
 	if c.AccessToken == "" {
 		return fmt.Errorf("failed to get access token: %v", respPayload["error_description"])
 	}
@@ -192,13 +192,14 @@ func (c *Client) getIDToken() error {
 		return fmt.Errorf("failed to read response body: %v", err)
 	}
 
-	fmt.Printf("resp.Body: %v\n", string(respByte))
+	// fmt.Printf("resp.Body: %v\n", string(respByte))
 
 	err = json.Unmarshal(respByte, &respPayload)
 	if err != nil {
 		fmt.Printf("err: %v\n", err)
 		return fmt.Errorf("failed to decode response body: %v", err)
 	}
+	c.IDToken, _ = respPayload["id_token"].(string)
 
 	return nil
 }
