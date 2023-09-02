@@ -8,7 +8,7 @@ package main
 
 import (
     "fmt"
-    "github.com/pichuchen/mayohr"
+    "github.com/pichuchen/go-mayohr"
 )
 
 func main () {

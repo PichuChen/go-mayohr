@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/pichuchen/mayohr"
+	"github.com/pichuchen/go-mayohr"
 )
 
 func main() {

@@ -1,3 +1,3 @@
-module github.com/pichuchen/mayohr
+module github.com/pichuchen/go-mayohr
 
 go 1.18
