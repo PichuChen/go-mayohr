@@ -24,6 +24,9 @@ func main() {
 		return
 	}
 
-	fmt.Printf("People: len=%d %+v", len(totalPeopleList), totalPeopleList[:3])
+	fmt.Printf("People: len=%d\n", len(totalPeopleList))
+	for i, person := range totalPeopleList {
+		fmt.Printf("%d Person: %+v\n", i+1, person.ChineseName)
+	}
 
 }

@@ -95,7 +95,7 @@ func (c *Client) PeopleSearch(keyword string, pageNumber int, pageSize int) (dat
 }
 
 func (c *Client) FetchAllPeople() (people []PersonData, err error) {
-	_, totalCount, err := c.PeopleSearch("0", 0, 10)
+	_, totalCount, err := c.PeopleSearch("0", 1, 10)
 	if err != nil {
 		fmt.Printf("failed to get people: %v", err)
 		return
@@ -103,11 +103,11 @@ func (c *Client) FetchAllPeople() (people []PersonData, err error) {
 
 	totalPeopleList := make([]PersonData, totalCount)
 	wg := sync.WaitGroup{}
-	for i := 0; i < totalCount/10; i++ {
+	for i := 0; i <= totalCount/10; i++ {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()
-			people, _, err := c.PeopleSearch("0", i, 10)
+			people, _, err := c.PeopleSearch("0", i+1, 10)
 			if err != nil {
 				fmt.Printf("failed to get people: %v", err)
 				return
