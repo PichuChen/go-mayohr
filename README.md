@@ -12,7 +12,7 @@ import (
 )
 
 func main () {
-    	username := os.Getenv("MAYOHR_USERNAME") // Change this to your username
+    username := os.Getenv("MAYOHR_USERNAME") // Change this to your username
 	password := os.Getenv("MAYOHR_PASSWORD") // Change this to your password
 
 	c := mayohr.NewClient(username, password)
